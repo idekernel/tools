@@ -9,9 +9,11 @@ let i = 0;
 lines.map(line => {
     
     if (line) {
-        let res = line.split('-o');        
+        // setup 1
+        let res = line.split('-H "pragma');        
         if (res) {
-            let urlstr = res[0].replace('curl -L "', '').replace('"', '');
+            // setup 2
+            let urlstr = res[0].replace('curl "', '').replace('"', '');
             if (urlstr) {
                 console.log(urlstr);
                 let pseurl = url.parse(urlstr);
@@ -26,10 +28,10 @@ lines.map(line => {
                     }
                     else {
                         formaturl += '\n';
-                        fs.writeFileSync(outpath, formaturl, {flag: 'a'});
+                        // fs.writeFileSync(outpath, formaturl, {flag: 'a'});
                     }
                     
-                    // fs.writeFileSync(outpath, formaturl, {flag: 'a'});
+                    fs.writeFileSync(outpath, formaturl, {flag: 'a'});
                 } 
                 
             }
